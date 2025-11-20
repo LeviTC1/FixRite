@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: fixrite-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: node dist/server.js
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "18"

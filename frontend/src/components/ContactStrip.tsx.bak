@@ -1,0 +1,30 @@
+import { Link } from "react-router-dom";
+
+const ContactStrip = () => (
+  <div className="contact-strip">
+    <Link to="/contact" className="project-thumb__link">
+      <article className="contact-thumb contact-thumb--cta">
+        <div className="contact-thumb__media" aria-hidden="true" />
+        <div className="contact-thumb__content">
+          <p className="eyebrow">Ready to start?</p>
+          <h2>Request a free quote</h2>
+          <p>Send a few details about your garden and we'll get back to you to arrange a quick visit. No obligation.</p>
+        </div>
+      </article>
+    </Link>
+    <article className="contact-thumb">
+      <div className="contact-thumb__media" aria-hidden="true" />
+      <div className="contact-thumb__content">
+        <p className="eyebrow">Prefer to talk?</p>
+        <h2>Call or email directly</h2>
+        <p>
+          Phone: <a href="tel:07702252453">07702 252453</a>
+          <br />
+          Email: <a href="mailto:liamthorpe52@gmail.com">liamthorpe52@gmail.com</a>
+        </p>
+      </div>
+    </article>
+  </div>
+);
+
+export default ContactStrip;
