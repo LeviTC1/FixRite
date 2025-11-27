@@ -17,8 +17,10 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const RESEND_FROM_EMAIL = process.env.RESEND_FROM_EMAIL;
 const RECEIVER_EMAIL = process.env.RECEIVER_EMAIL;
 const RESEND_TO_EMAIL = RECEIVER_EMAIL || process.env.RESEND_TO_EMAIL || FALLBACK_NOTIFICATION_EMAIL;
+const EMAIL_DELIVERY_MODE = (process.env.EMAIL_DELIVERY_MODE ?? "live").toLowerCase();
+const isMockEmailDelivery = EMAIL_DELIVERY_MODE === "mock";
 
-const resendClient = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : undefined;
+const resendClient = !isMockEmailDelivery && RESEND_API_KEY ? new Resend(RESEND_API_KEY) : undefined;
 
 const trimValue = (value: unknown) => (typeof value === "string" ? value.trim() : "");
 const isValidEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -103,6 +105,11 @@ const buildTextEmail = (payload: ContactRequestBody) => {
   ].join("\n");
 };
 
+const logMockEmailDelivery = (payload: ContactRequestBody) => {
+  console.info("[api] Mock email delivery");
+  console.info(buildTextEmail(payload));
+};
+
 contactRoute.post("/", async (req, res) => {
   const body = req.body as Partial<ContactRequestBody>;
   const payload: ContactRequestBody = {
@@ -132,6 +139,11 @@ contactRoute.post("/", async (req, res) => {
       error: "Validation failed",
       details: validationErrors,
     });
+  }
+
+  if (isMockEmailDelivery) {
+    logMockEmailDelivery(payload);
+    return res.json({ success: true, message: SUCCESS_MESSAGE });
   }
 
   if (!resendClient || !RESEND_FROM_EMAIL || !RESEND_TO_EMAIL) {

@@ -30,7 +30,7 @@ const Home = () => {
       <PageSection>
         <div className="hero">
           <div className="hero__content">
-            <span className="hero-pill">24/7 fix desk · Greater Manchester</span>
+            <span className="hero-pill">24/7 fix desk | Greater Manchester</span>
             <h1>Fast, reliable property repairs. FixRite.</h1>
             <p>
               Multi-trade specialists who show up when they say they will, provide photographic proof, and leave your tenants confident
@@ -42,7 +42,7 @@ const Home = () => {
                 Get a quote
               </Button>
             </div>
-            <p className="hero__contact">0330 043 8653 · info@fixrite247.com</p>
+            <p className="hero__contact">0330 043 8653 | info@fixrite247.com</p>
           </div>
         </div>
       </PageSection>

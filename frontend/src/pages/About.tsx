@@ -18,8 +18,8 @@ const values = [
 ];
 
 const credentials = [
-  { title: "Insurance", detail: "£10m public liability · £5m employers" },
-  { title: "Certifications", detail: "NICEIC · Gas Safe partners · CHAS" },
+  { title: "Insurance", detail: "Â£10m public liability | Â£5m employers" },
+  { title: "Certifications", detail: "NICEIC | Gas Safe partners | CHAS" },
   { title: "Coverage", detail: "Greater Manchester, Cheshire, Lancashire" },
 ];
 
@@ -28,7 +28,7 @@ const About = () => (
     <PageSection>
       <div className="hero">
         <div className="hero__content">
-          <p className="eyebrow">Lewis Mather · Managing Director</p>
+          <p className="eyebrow">Lewis Mather | Managing Director</p>
           <h1>Dependable property repairs led by Lewis Mather</h1>
           <p>
             Managing Director Lewis Mather has spent the last decade supporting estate managers, landlords and commercial agents who need reliable
